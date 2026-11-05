@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f8f1">
+    <meta name="description" content="Meet five much-loved tropical fruits in the Local Fruit Atlas.">
+    <title>Local Fruit Atlas</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Local Fruit Atlas home">
+        <span class="wordmark-mark" aria-hidden="true">LF</span>
+        <span>LOCAL FRUIT ATLAS</span>
+      </a>
+      <span class="topbar-note">A little guide to the good things growing nearby</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> FIELD NOTES / 001</p>
+          <h1 id="page-title">Fresh from<br><span>the tropics.</span></h1>
+          <p class="intro-text">Five familiar fruits, each with its own way of brightening the table. Pick a favorite and get to know it.</p>
+          <a class="scroll-link" href="#fruit-list"><span aria-hidden="true">↓</span> MEET THE FRUIT</a>
+        </div>
+        <div class="intro-art" aria-label="A colorful arrangement of tropical fruit" role="img">
+          <div class="sun-disc"></div>
+          <div class="art-label art-label-top">GROWN UNDER<br>WARMER SKIES</div>
+          <span class="art-fruit art-mango" aria-hidden="true">🥭</span>
+          <span class="art-fruit art-pineapple" aria-hidden="true">🍍</span>
+          <span class="art-fruit art-watermelon" aria-hidden="true">🍉</span>
+          <span class="art-fruit art-banana" aria-hidden="true">🍌</span>
+          <span class="art-fruit art-coconut" aria-hidden="true">🥥</span>
+          <div class="art-label art-label-bottom">SWEETNESS, IN SEASON <span>✳</span></div>
+        </div>
+        <div class="intro-index" aria-hidden="true"><span>VOL. 01</span><span>5 FRUITS</span><span>ALL GOOD</span></div>
+      </section>
+
+      <section class="fruit-section" id="fruit-list" aria-labelledby="fruit-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE PICK OF THE DAY</p>
+            <h2 id="fruit-heading">A fruit for every mood<span>.</span></h2>
+          </div>
+          <p class="section-count">01 — 05<br><span>THE LOCAL FIVE</span></p>
+        </div>
+
+        <div class="fruit-grid">
+          {% for fruit in fruits %}
+          <article class="fruit-card {{ fruit.color }}">
+            <div class="card-topline"><span>{{ fruit.number }}</span><span class="fruit-tag">{{ fruit.tag }}</span></div>
+            <div class="fruit-portrait" aria-hidden="true"><span>{{ fruit.emoji }}</span></div>
+            <div class="fruit-info">
+              <h3>{{ fruit.name }}</h3>
+              <p class="fruit-description">{{ fruit.description }}</p>
+              <p class="flavor"><span>NOTES</span>{{ fruit.flavor }}</p>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>GOOD FRUIT. GOOD COMPANY.</span>
+        <span>LOCAL FRUIT ATLAS <span class="footer-star" aria-hidden="true">✳</span></span>
+      </footer>
+    </main>
+  </body>
+</html>
